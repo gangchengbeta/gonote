@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "gonote/api"
 
 func main() {
-	fmt.Printf("my go demo")
+	api.SayHello("dsdf")
 }
