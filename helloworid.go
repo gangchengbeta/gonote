@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	api.BasicDataType()
+	api.Pointer()
 }

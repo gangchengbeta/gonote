@@ -93,3 +93,17 @@ func BasicDataType() {
 	fmt.Printf("str = %v, type = %T\n", str, str)
 	fmt.Printf(strconv.Itoa(len(str)))
 }
+
+// 指针
+// * 取值
+// & 取地址
+func incr(n *int) {
+	*n++
+	fmt.Println(*n)
+}
+
+func Pointer() {
+	var src = 2
+	incr(&src)
+	fmt.Println(src)
+}
