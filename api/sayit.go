@@ -1,6 +1,9 @@
 package api
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 // 这是单行注释
 func SayHello(word string) {
@@ -46,4 +49,47 @@ func VarAndConstant() {
 	)
 	fmt.Println(c1, c2, c3, c4, c5, c6)
 	fmt.Println(gv)
+}
+
+// 基本数据类型
+func BasicDataType() {
+	// 整型
+	var (
+		n1        = 0b010101
+		n2 int8   = 0o72
+		n3 uint16 = 0xAF1
+	)
+	fmt.Printf("n1 = %v, type = %T\n", n1, n1)
+	fmt.Printf("n2 = %v, type = %T\n", n2, n2)
+	fmt.Printf("n3 = %v, type = %T\n", n3, n3)
+
+	//浮点型
+	var (
+		f1         = 1.02
+		f2 float32 = 1.00002
+	)
+	fmt.Printf("f1 = %v, type = %T\n", f1, f1)
+	fmt.Printf("f2 = %v, type = %T\n", f2, f2)
+
+	// 数值型数据类型转换
+	n2 = int8(n3) //(需要注意精度)
+	fmt.Printf("n2 = %v, type = %T\n", n2, n2)
+
+	// 字符型
+	var (
+		c1 byte
+		c2      = '0'
+		c3 rune = '中'
+	)
+	fmt.Printf("c1 的码值为 %v ,这个码值对用的字符是 %c  type = %T\n", c1, c1, c1)
+	fmt.Printf("c2 的码值为 %v ,这个码值对用的字符是 %c  type = %T\n", c2, c2, c2)
+	fmt.Printf("c3 的码值为 %v ,这个码值对用的字符是 %c  type = %T\n", c3, c3, c3)
+
+	// 	布尔型
+	var boolean bool = true
+	fmt.Printf("boolean = %v, type = %T\n", boolean, boolean)
+	// 字符串
+	var str string = "hello world"
+	fmt.Printf("str = %v, type = %T\n", str, str)
+	fmt.Printf(strconv.Itoa(len(str)))
 }
