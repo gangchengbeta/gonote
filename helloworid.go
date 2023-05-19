@@ -1,7 +1,11 @@
 package main
 
-import "gonote/api"
+import (
+	"fmt"
+	"gonote/api"
+)
 
 func main() {
-	api.SayHello("dsdf")
+	api.VarAndConstant()
+	fmt.Println(api.Version)
 }
