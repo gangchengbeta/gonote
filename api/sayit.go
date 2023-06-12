@@ -2,8 +2,65 @@ package api
 
 import (
 	"fmt"
+	"gonote/util"
 	"strconv"
 )
+
+var A = util.F("api.A")
+
+func init() {
+	util.F("api.init1")
+}
+func init() {
+	util.F("api.init2")
+}
+
+// label & goto (goto语句不推荐使用)
+func LabelAndGoto() {
+	fmt.Println("\n 标签")
+outside:
+	for i := 0; i < 10; i++ {
+		for j := 0; j < 10; j++ {
+			fmt.Print("+ ")
+			if i == 9 && j == 4 {
+				break outside
+			}
+		}
+		fmt.Println()
+	}
+	fmt.Println("\n goto")
+	fmt.Print("1")
+	goto four
+	fmt.Print("2")
+	fmt.Print("3")
+four:
+	fmt.Print("4")
+}
+
+// for循环
+func ForRoll() {
+	fmt.Println("\n 无限循环")
+	i := 1
+	for {
+		fmt.Print(i, "\t")
+		i++
+		if i == 10 {
+			fmt.Println()
+			break
+		}
+	}
+	fmt.Println("\n 条件循环")
+	i = 1
+	for i < 11 {
+		fmt.Print(i, "\t")
+		i++
+	}
+	fmt.Println("\n 标准for循环")
+	for i := 0; i < 11; i++ {
+		fmt.Print(i, "\t")
+	}
+
+}
 
 // switchCase
 func SwitchDemo(age int) {
