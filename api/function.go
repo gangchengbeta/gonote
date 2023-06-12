@@ -34,12 +34,12 @@ func Defer() int {
 	return f(2)
 }
 func Funcation() {
-	// 匿名函数
-	//var getSum = func(n1, n2 int) (sum, difference int) {
-	//	sum = n1 + n2
-	//	difference = n1 - n2
-	//	return
-	//}
+	//匿名函数
+	var getSum = func(n1, n2 int) (sum, difference int) {
+		sum = n1 + n2
+		difference = n1 - n2
+		return
+	}
 	// 立即调用的匿名函数
 	res3, res4 := func(n1, n2 int) (sum, difference int) {
 		sum = n1 + n2

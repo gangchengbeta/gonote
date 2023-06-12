@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"gonote/api"
 	"gonote/util"
 )
@@ -17,6 +16,6 @@ func init() {
 
 // 主函数
 func main() {
-	api.DeferRecover()
-	fmt.Println("DeferRecover() 之后仍在执行")
+	api.Funcation()
+	//fmt.Println("DeferRecover() 之后仍在执行")
 }
