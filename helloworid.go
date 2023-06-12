@@ -4,6 +4,7 @@ import (
 	"gonote/api"
 )
 
+// 主函数
 func main() {
-	api.Pointer()
+	api.SwitchDemo(1)
 }

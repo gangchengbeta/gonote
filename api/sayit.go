@@ -5,15 +5,30 @@ import (
 	"strconv"
 )
 
+// switchCase
+func SwitchDemo(age int) {
+	switch {
+	case age < 15:
+		fmt.Println("小学生")
+		fallthrough // 穿透 继续匹配下一项
+	case age < 18:
+		fmt.Println("中学生")
+	case age < 22:
+		fmt.Println("大学生")
+	default:
+		fmt.Println("社会人")
+	}
+}
+
 // 这是单行注释
 func SayHello(word string) {
 	fmt.Printf("\"my go demo\"" + word)
 	fmt.Printf("\a")
 }
 
-// 变量与常量
-
+// 这是多行注释
 // 全局变量
+
 var gv int = 1
 
 // 全局常量
@@ -95,8 +110,7 @@ func BasicDataType() {
 }
 
 // 指针
-// * 取值
-// & 取地址
+// * 取值 & 取地址
 func incr(n *int) {
 	*n++
 	fmt.Println(*n)
@@ -106,4 +120,37 @@ func Pointer() {
 	var src = 2
 	incr(&src)
 	fmt.Println(src)
+}
+
+// FmtVerbs fmt格式字符
+func FmtVerbs() {
+	fmt.Println("\n 通用")
+	fmt.Println("%%\n", "百分号")
+
+	fmt.Println("\n 整数")
+	i := 123
+	fmt.Printf("%U\n", i)
+	fmt.Printf("%c\n", i)
+	fmt.Printf("%q\n", i)
+	fmt.Printf("\n 浮点数")
+	f := 123.456
+	fmt.Printf("%f\n", f)
+	// 保留两位小数
+	fmt.Printf("%.2f\n", f)
+	// 保留两位小数，宽度为10
+	fmt.Printf("%10.2f\n", f)
+	// 指数为2的科学计数法(会有不可避免精度误差)
+	fmt.Printf("%b", f)
+
+	fmt.Printf("\n 布尔")
+	fmt.Printf("%t\n", f == 123456)
+	fmt.Printf("\n 字符串或byte切片")
+	s := "123"
+	fmt.Printf("%s\n", "hello world")
+	fmt.Printf("%q\n", "hello world")
+	//将每个byte按两位小写十六进制输出
+	fmt.Printf("%x\n", "hello world")
+	fmt.Printf("\n 指针")
+	p := &s
+	fmt.Printf("%p\n", p)
 }
