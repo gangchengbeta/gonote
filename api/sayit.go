@@ -2,18 +2,17 @@ package api
 
 import (
 	"fmt"
-	"gonote/util"
 	"strconv"
 )
 
-var A = util.F("api.A")
-
-func init() {
-	util.F("api.init1")
-}
-func init() {
-	util.F("api.init2")
-}
+//var A = util.F("api.A")
+//
+//func init() {
+//	util.F("api.init1")
+//}
+//func init() {
+//	util.F("api.init2")
+//}
 
 // label & goto (goto语句不推荐使用)
 func LabelAndGoto() {
