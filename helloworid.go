@@ -1,7 +1,8 @@
 package main
 
 import (
-	"gonote/api"
+	"fmt"
+	"gonote/util"
 )
 
 //var A = util.F("main.A")
@@ -15,6 +16,11 @@ import (
 
 // 主函数
 func main() {
-	api.Map()
+	//api.Map()
 	//fmt.Println("DeferRecover() 之后仍在执行")
+	var counter = util.Counter()
+	fmt.Println(counter())
+	fmt.Println(counter())
+	fmt.Println(counter())
+	fmt.Println(counter())
 }

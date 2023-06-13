@@ -2,6 +2,15 @@ package util
 
 import "fmt"
 
+// 计数器函数
+func Counter() func() int {
+	count := 0
+	return func() int {
+		count++
+		return count
+	}
+}
+
 // 每个包都可以有自己的init函数 且可以有多个
 // init函数在main函数之前执行
 // 执行顺序取决于包的依赖关系
