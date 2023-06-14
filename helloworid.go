@@ -1,6 +1,8 @@
 package main
 
-import "gonote/note"
+import (
+	"gonote/routine"
+)
 
 //var A = util.F("main.A")
 //
@@ -20,5 +22,6 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 	//fmt.Println(counter())
-	note.Interface()
+	routine.Channel()
+
 }
