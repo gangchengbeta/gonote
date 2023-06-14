@@ -16,6 +16,33 @@ type Contact struct {
 	Remark string `json:"remark"`
 }
 
+// 在Go语言中，方法是指与特定类型相关联的函数。方法可以访问和操作类型的属性，并且可以在类型的实例上调用。
+// 方法的语法如下：
+//
+//	func (variable_name variable_data_type) function_name() [return_type]{
+//		/* 函数体*/
+//	}
+//
+// 参数传递是值传递 如需修改原结构体内容可以通过指针传递
+func (u User) printName() {
+	u.Id = 1000000
+	fmt.Println("name:", u.Name)
+}
+func (u *User) setId() {
+	u.Id = 1000
+}
+func Method() {
+	u := User{
+		Name: "张三",
+		Id:   111,
+	}
+	u.setId()
+	fmt.Printf("u: %v \n", u)
+	u.printName()
+	fmt.Printf("u: %v \n", u)
+
+}
+
 // Structs 结构体
 func Structs() {
 	var u1 User = User{
