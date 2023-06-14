@@ -90,5 +90,68 @@ func TypeDefine() {
 	type myu16 = uint16
 	var num2 myu16 = 100
 	fmt.Printf("num2: %v , Type of num2 : %T \n", num2, num2)
+}
 
+// 接口
+// 接口是一种类型，它规定了变量有哪些方法。
+// 任何类型的方法集中只要拥有接口中的全部方法，那么这个类型就实现了这个接口。
+// 接口的定义格式如下：
+//
+//	type 接口类型名 interface{
+//		方法名1( 参数列表1 ) 返回值列表1
+//		方法名2( 参数列表2 ) 返回值列表2
+//		...
+//	}
+type textMsg struct {
+	Type string
+	Text string
+}
+
+func (tm *textMsg) setText() {
+
+	tm.Text = "Hello World"
+}
+func (tm *textMsg) setType() {
+	tm.Type = "text"
+}
+
+type imgMsg struct {
+	Type string
+	Img  string
+}
+
+func (img *imgMsg) setImg() {
+	img.Img = "img.png"
+}
+func (img *imgMsg) setType() {
+	img.Type = "img"
+}
+
+type Mes interface {
+	setType()
+}
+
+// 类型断言
+// 类型断言是一个使用在接口值上的操作，语法上它看起来像 x.(T) ，其中 x 是一个接口的类型和 T 是一个类型（也称为断言类型）。
+// 还原为原始类型 interface.(Type)
+// 如果接口没有包含任何值，那么这个类型断言就会失败，但是如果接口包含了值，那么这个操作就会检查这个接口的值是否是指定的类型。
+// 可返回两个值，第一个是值，第二个是是否成功
+// value, ok := element.(T)
+// 空接口可以接受任何类型的值 interface{}
+func SendMsg(mes Mes) {
+	mes.setType()
+	switch mesPtr := mes.(type) {
+	case *textMsg:
+		mesPtr.setText()
+	case *imgMsg:
+		mesPtr.setImg()
+	}
+	fmt.Printf("mes: %v \n", mes)
+}
+
+func Interface() {
+	tm := textMsg{}
+	SendMsg(&tm)
+	img := imgMsg{}
+	SendMsg(&img)
 }

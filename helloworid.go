@@ -20,5 +20,5 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 	//fmt.Println(counter())
-	note.Method()
+	note.Interface()
 }
