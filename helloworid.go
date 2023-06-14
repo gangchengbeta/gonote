@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"gonote/util"
-)
+import "gonote/note"
 
 //var A = util.F("main.A")
 //
@@ -18,9 +15,10 @@ import (
 func main() {
 	//api.Map()
 	//fmt.Println("DeferRecover() 之后仍在执行")
-	var counter = util.Counter()
-	fmt.Println(counter())
-	fmt.Println(counter())
-	fmt.Println(counter())
-	fmt.Println(counter())
+	//var counter = util.Counter()
+	//fmt.Println(counter())
+	//fmt.Println(counter())
+	//fmt.Println(counter())
+	//fmt.Println(counter())
+	note.Structs()
 }

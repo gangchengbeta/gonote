@@ -2,7 +2,7 @@ package util
 
 import "fmt"
 
-// 计数器函数
+// Counter 计数器函数
 func Counter() func() int {
 	count := 0
 	return func() int {
