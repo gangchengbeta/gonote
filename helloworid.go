@@ -1,8 +1,6 @@
 package main
 
-import (
-	"gonote/routine"
-)
+import "gonote/std"
 
 //var A = util.F("main.A")
 //
@@ -22,6 +20,6 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 	//fmt.Println(counter())
-	routine.Channel()
 
+	std.StrCovert()
 }
