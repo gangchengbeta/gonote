@@ -2,7 +2,6 @@ package note
 
 import (
 	"fmt"
-	"gonote/work"
 )
 
 // ArrayDemo 数组
@@ -82,6 +81,4 @@ func SliceDemo() {
 	for i, v := range str {
 		fmt.Printf("str[%v]: %c\n", i, v)
 	}
-	key := work.SelectByKey("登录", "注册", "注销")
-	fmt.Println(key)
 }
