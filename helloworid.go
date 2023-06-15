@@ -21,5 +21,5 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 
-	std.StrCovert()
+	std.PackageStrings()
 }
