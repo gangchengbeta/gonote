@@ -34,12 +34,6 @@ func createDir(path string) error {
 	return os.MkdirAll(dirPath, os.ModePerm)
 }
 func FileOperation() {
-	//err := createDir("D:/test/1/text.md")
-	//if err != nil {
-	//	return
-	//}
-	//fmt.Println("文件夹创建成功")
-
 	dir := readDir("D:\\CodeProjects")
 	fmt.Println(dir)
 }
