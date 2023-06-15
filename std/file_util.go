@@ -1,6 +1,7 @@
 package std
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strings"
@@ -34,10 +35,12 @@ func createDir(path string) error {
 	return os.MkdirAll(dirPath, os.ModePerm)
 }
 func FileOperation() {
-	dir := readDir("D:\\CodeProjects")
-	fmt.Println(dir)
+	//dir := readDir("D:\\CodeProjects")
+	//fmt.Println(dir)
+	fileRW("2d1.txt")
 }
 
+// 读取文件夹下的所有文件
 func readDir(path string) []string {
 	var file = make([]string, 16)
 	dirEntries, err := os.ReadDir(path)
@@ -48,4 +51,39 @@ func readDir(path string) []string {
 		file = append(file, entry.Name())
 	}
 	return file
+}
+
+// 文件读写
+func fileRW(path string) {
+	// 判断文件是否存在
+	if !fileExist(path) {
+		// q: go中如何创建文件
+		// a: os.Create(path) 会创建文件
+		_, err := os.Create(path)
+		if err != nil {
+			panic(err)
+		}
+	}
+	file, err := os.OpenFile(path, os.O_WRONLY, os.ModePerm)
+	if err != nil {
+		panic(err)
+	}
+	// 关闭文件
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(file)
+	writer := bufio.NewWriter(file)
+	// 写入文件
+	_, err = writer.WriteString("hello world")
+	if err != nil {
+		panic(err)
+	}
+	// 刷新缓冲区
+	err = writer.Flush()
+	if err != nil {
+		panic(err)
+	}
 }
