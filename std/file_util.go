@@ -37,7 +37,7 @@ func createDir(path string) error {
 func FileOperation() {
 	//dir := readDir("D:\\CodeProjects")
 	//fmt.Println(dir)
-	fileRW("2d1.txt")
+	fileRW("23d1.txt")
 }
 
 // 读取文件夹下的所有文件
@@ -55,16 +55,7 @@ func readDir(path string) []string {
 
 // 文件读写
 func fileRW(path string) {
-	// 判断文件是否存在
-	if !fileExist(path) {
-		// q: go中如何创建文件
-		// a: os.Create(path) 会创建文件
-		_, err := os.Create(path)
-		if err != nil {
-			panic(err)
-		}
-	}
-	file, err := os.OpenFile(path, os.O_WRONLY, os.ModePerm)
+	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE, os.ModePerm)
 	if err != nil {
 		panic(err)
 	}
