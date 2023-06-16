@@ -1,6 +1,9 @@
 package main
 
-import "gonote/std"
+import (
+	"gonote/std"
+	"time"
+)
 
 //var A = util.F("main.A")
 //
@@ -21,5 +24,6 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 
-	std.FileOperation()
+	std.RedisBasic()
+	time.Sleep(time.Second * 10)
 }
