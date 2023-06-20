@@ -23,5 +23,5 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 
-	note.AppendDemo()
+	note.LearnString()
 }
