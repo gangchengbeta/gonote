@@ -20,6 +20,13 @@ func Map() {
 	}
 	fmt.Println(m1)
 
+	// map的插入
+	m1["password"] = "123"
+	fmt.Println(m1)
+	// 修改
+	m1["age"] = "100"
+	fmt.Println(m1)
+
 	// 查找
 	v, ok := m1["name1"]
 	if ok {

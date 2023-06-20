@@ -19,18 +19,18 @@ func deferUtil() func(int) int {
 	return func(n int) int {
 		fmt.Printf("本次调用的参数为%v\n", n)
 		i++
-		fmt.Printf("deferUtil被第%v次调用", i)
+		fmt.Printf("deferUtil被第%v次调用\n", i)
 		return i
 	}
 }
 
 // Defer  延迟执行函数
 // 延迟执行的函数会被压入一个栈中 return之后按照先进后出的顺序调用
-// 延迟执行的函数其参数会立即求值
+// 当defer后接函数有参数时其参数会立即求值
 // defer常用于资源释放、文件关闭、解锁以及记录时间等操作
 func Defer() int {
 	f := deferUtil()
-	defer f(f(3))
+	defer f(f(3)) // defer的注册
 	return f(2)
 }
 func Funcation() {
