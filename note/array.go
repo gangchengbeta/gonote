@@ -82,3 +82,33 @@ func SliceDemo() {
 		fmt.Printf("str[%v]: %c\n", i, v)
 	}
 }
+
+func AppendDemo() {
+	arr := make([]int, 3, 5)
+	arr[0], arr[1], arr[2] = 2, 7, 9
+	//底层数组 : 2, 7, 9, 8
+	brr := append(arr, 8)
+	// brr和arr共享底层数组 因此修改arr会影响brr 反之亦然
+	fmt.Println(len(arr)) // 3
+	fmt.Println(len(brr)) // 4
+	//底层数组 : 2, 7, 9, 10
+	arr = append(arr, 10)
+	fmt.Println(arr)
+	fmt.Println(brr)
+	fmt.Println("brr 插入 	容量满")
+	brr = append(brr, 15)
+	arr[0] = 100
+	brr[1] = 200
+	fmt.Println("容量满 arr", arr) //容量满 arr [100 200 9 10]
+	fmt.Println("容量满 brr", brr) //容量满 brr [100 200 9 10 15]
+	//根据以上运行结果可知 当容量未满时，arr和brr始终共享底层数组
+
+	fmt.Println("brr 插入  需要扩容")
+	brr = append(brr, 16)
+	arr[2] = 200
+	brr[3] = 300
+	fmt.Println("需要扩容 arr", arr) //需要扩容 arr [100 200 200 10]
+	fmt.Println("需要扩容 brr", brr) //需要扩容 brr [100 200 9 300 15 16]
+	// 根据以上运行结果可知 当容量满时，arr和brr不再共享底层数组
+	// 底层会重新分配一个数组，将原数组的值拷贝到新数组中 将新数组的地址赋值给brr的Pointer 从而对brr的修改不会影响arr
+}
