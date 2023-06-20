@@ -1,7 +1,6 @@
 package std
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"strings"
@@ -37,7 +36,7 @@ func createDir(path string) error {
 func FileOperation() {
 	//dir := readDir("D:\\CodeProjects")
 	//fmt.Println(dir)
-	fileRW("23d1.txt")
+	fileRW("d1.txt")
 }
 
 // 读取文件夹下的所有文件
@@ -55,7 +54,8 @@ func readDir(path string) []string {
 
 // 文件读写
 func fileRW(path string) {
-	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE, os.ModePerm)
+	// 打开文件
+	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644) //os.O_TRUNC 清空文件 os.O_APPEND 追加写入
 	if err != nil {
 		panic(err)
 	}
@@ -66,15 +66,30 @@ func fileRW(path string) {
 			panic(err)
 		}
 	}(file)
-	writer := bufio.NewWriter(file)
-	// 写入文件
-	_, err = writer.WriteString("hello world")
+
+	//读文件
+	readByteSlice := make([]byte, 1024)
+	read, err := file.Read(readByteSlice)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println(string(readByteSlice[:read]))
+	//写入文件
+	context := "大多大事单倍行距阿萨德大萨达是多少收到是是"
+	write, err := file.WriteString(context)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(write) // 成功向文件中写入了多少字节
+
+	//writer := bufio.NewWriter(file)
+	//_, err = writer.WriteString("hello world")
+	//if err != nil {
+	//	panic(err)
+	//}
 	// 刷新缓冲区
-	err = writer.Flush()
-	if err != nil {
-		panic(err)
-	}
+	//err = writer.Flush()
+	//if err != nil {
+	//	panic(err)
+	//}
 }
