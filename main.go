@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gonote/std"
+	"gonote/concurrency"
 )
 
 //var A = util.F("main.A")
@@ -23,5 +23,5 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 
-	std.SerialJSON()
+	concurrency.SimpleWaitG()
 }

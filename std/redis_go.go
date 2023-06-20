@@ -5,33 +5,40 @@ import (
 	"github.com/go-redis/redis"
 )
 
-var redisClient *redis.Client
+var RedisClient *redis.Client
 
-func initRedis() (err error) {
-	redisClient = redis.NewClient(&redis.Options{
+func init() {
+	// 不影响主程序
+	defer func() {
+		recover()
+	}()
+	RedisClient = redis.NewClient(&redis.Options{
 		Addr:     "112.126.71.240:6379",
 		Password: "dockerredis", //
 		DB:       0,
 	})
-	_, err = redisClient.Ping().Result()
+	err := initRedis()
+	if err != nil {
+		panic(err)
+		return
+	}
+	fmt.Println("redis连接成功！")
+}
+
+// redis 初始化
+func initRedis() (err error) {
+	_, err = RedisClient.Ping().Result()
 	return
 }
 
 // RedisBasic go 连接redis
 func RedisBasic() {
-	err := initRedis()
-	if err != nil {
-		fmt.Printf("connect redis failed! err : %v\n", err)
-		return
-	}
-	fmt.Println("redis连接成功！")
-	s, err := redisClient.Get("login:token:u7fpffqgduw17y3eh5zomltaunfockaz").Result()
+	s, _ := RedisClient.Get("login:token:u7fpffqgduw17y3eh5zomltaunfockaz").Result()
 	fmt.Println(s)
-
 	defer func(redisclient *redis.Client) {
 		err := redisclient.Close()
 		if err != nil {
 			panic(err)
 		}
-	}(redisClient)
+	}(RedisClient)
 }
