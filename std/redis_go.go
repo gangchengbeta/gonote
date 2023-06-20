@@ -17,7 +17,7 @@ func initRedis() (err error) {
 	return
 }
 
-// go 连接redis
+// RedisBasic go 连接redis
 func RedisBasic() {
 	err := initRedis()
 	if err != nil {
