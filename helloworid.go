@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gonote/note"
+	"gonote/std"
 )
 
 //var A = util.F("main.A")
@@ -23,5 +23,5 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 
-	note.Defer()
+	std.PackageTime()
 }
