@@ -1,8 +1,6 @@
 package main
 
-import (
-	"gonote/concurrency"
-)
+import "gonote/mysql"
 
 //var A = util.F("main.A")
 //
@@ -23,5 +21,5 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 
-	concurrency.DeadLockSimpleDemo()
+	mysql.DBCURD()
 }
