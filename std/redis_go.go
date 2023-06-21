@@ -7,11 +7,8 @@ import (
 
 var RedisClient *redis.Client
 
-func init() {
+func init111111() {
 	// 不影响主程序
-	defer func() {
-		recover()
-	}()
 	RedisClient = redis.NewClient(&redis.Options{
 		Addr:     "112.126.71.240:6379",
 		Password: "dockerredis", //
