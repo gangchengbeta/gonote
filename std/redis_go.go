@@ -7,25 +7,20 @@ import (
 
 var RedisClient *redis.Client
 
-func init111111() {
+func initRedis() {
 	// 不影响主程序
 	RedisClient = redis.NewClient(&redis.Options{
 		Addr:     "112.126.71.240:6379",
 		Password: "dockerredis", //
 		DB:       0,
 	})
-	err := initRedis()
+	_, err := RedisClient.Ping().Result()
 	if err != nil {
 		panic(err)
 		return
 	}
 	fmt.Println("redis连接成功！")
-}
 
-// redis 初始化
-func initRedis() (err error) {
-	_, err = RedisClient.Ping().Result()
-	return
 }
 
 // RedisBasic go 连接redis

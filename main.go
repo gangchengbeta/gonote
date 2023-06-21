@@ -1,6 +1,6 @@
 package main
 
-import "gonote/mysql"
+import "gonote/db"
 
 //var A = util.F("main.A")
 //
@@ -21,5 +21,5 @@ func main() {
 	//fmt.Println(counter())
 	//fmt.Println(counter())
 
-	mysql.DBCURD()
+	db.RedisCRUD()
 }

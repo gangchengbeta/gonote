@@ -1,4 +1,4 @@
-package mysql
+package db
 
 // 文档地址 : https://gorm.io/zh_CN/docs/update.html
 import (
