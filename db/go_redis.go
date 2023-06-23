@@ -19,16 +19,23 @@ func RedisCRUD() {
 	//deleteRedis()
 	//writeList()
 	//readAllList()
-	writeHash()
-	//readHash()
+	//writeHash()
+	readHash()
 }
 
 func readHash() {
-
+	key := "hash"
+	value, err := redisClient.HGet(key, "id").Result()
+	handleRedisError(err)
+	fmt.Println(value)
+	redisClient.Del(key)
 }
 
 func writeHash() {
-
+	key := "hash"
+	value, err := redisClient.HSet(key, "id", "123").Result()
+	handleRedisError(err)
+	fmt.Println(value)
 }
 
 func readAllList() {
