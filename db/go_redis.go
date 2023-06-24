@@ -8,40 +8,43 @@ import (
 )
 
 var (
-	redisClient *redis.Client
+	RedisClient *redis.Client
 	_           context.Context
 )
 
 func RedisCRUD() {
-	initRedis()
 	//readString()
 	//writeString()
 	//deleteRedis()
 	//writeList()
 	//readAllList()
-	//writeHash()
-	readHash()
+	writeHash()
+	//readHash()
 }
 
 func readHash() {
-	key := "hash"
-	value, err := redisClient.HGet(key, "id").Result()
-	handleRedisError(err)
+	key := "student:123"
+	value, err := RedisClient.HGet(key, "id").Result()
+	HandleRedisError(err)
 	fmt.Println(value)
-	redisClient.Del(key)
+	RedisClient.Del(key)
 }
 
 func writeHash() {
-	key := "hash"
-	value, err := redisClient.HSet(key, "id", "123").Result()
-	handleRedisError(err)
-	fmt.Println(value)
+	key := "student:"
+	filed := make(map[string]interface{})
+	filed["id"] = "123"
+	filed["Name"] = "coder4j"
+	filed["Age"] = 18
+	filed["Height"] = 180.04
+	_, err := RedisClient.HMSet(key+"123", filed).Result()
+	HandleRedisError(err)
 }
 
 func readAllList() {
 	key := "list"
-	value, err := redisClient.LRange(key, 0, -1).Result()
-	handleRedisError(err)
+	value, err := RedisClient.LRange(key, 0, -1).Result()
+	HandleRedisError(err)
 	fmt.Println(value)
 }
 
@@ -49,47 +52,47 @@ func writeList() {
 	key := "list"
 	value := []interface{}{1, 2, 3, "傻逼张堡垒"}
 	// 写入
-	err := redisClient.LPush(key, value...).Err()
-	//redisClient.Expire(key, 10*time.Second)
-	handleRedisError(err)
+	err := RedisClient.LPush(key, value...).Err()
+	//RedisClient.Expire(key, 10*time.Second)
+	HandleRedisError(err)
 }
 
 func deleteRedis() {
 	key := "name"
-	err := redisClient.Del(key).Err()
-	handleRedisError(err)
+	err := RedisClient.Del(key).Err()
+	HandleRedisError(err)
 }
 
 func readString() {
 	key := "name"
-	value, err := redisClient.Get(key).Result()
-	handleRedisError(err)
+	value, err := RedisClient.Get(key).Result()
+	HandleRedisError(err)
 	fmt.Println(value)
 }
-func initRedis() {
+func init() {
 	// 不影响主程序
-	redisClient = redis.NewClient(&redis.Options{
+	RedisClient = redis.NewClient(&redis.Options{
 		Addr:     "112.126.71.240:6379",
 		Password: "dockerredis", //
 		DB:       0,
 	})
 	//ctx = context.TODO()
-	_, err := redisClient.Ping().Result()
-	handleRedisError(err)
+	_, err := RedisClient.Ping().Result()
+	HandleRedisError(err)
 	fmt.Println("redis连接成功！")
 }
 
 func writeString() {
 	key := "name"
 	value := "coder4j"
-	err := redisClient.Set(key, value, 10*time.Second).Err()
+	err := RedisClient.Set(key, value, 10*time.Second).Err()
 	// 也可以调用Expire方法设置过期时间
-	//redisClient.Expire(key, 10*time.Second)
-	handleRedisError(err)
+	//RedisClient.Expire(key, 10*time.Second)
+	HandleRedisError(err)
 }
 
 // key不存在时 不至于结束程序
-func handleRedisError(err error) {
+func HandleRedisError(err error) {
 	if err != nil {
 		if err == redis.Nil {
 			fmt.Printf("key does not exist\n")
