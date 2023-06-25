@@ -112,3 +112,20 @@ func AppendDemo() {
 	// 根据以上运行结果可知 当容量满时，arr和brr不再共享底层数组
 	// 底层会重新分配一个数组，将原数组的值拷贝到新数组中 将新数组的地址赋值给brr的Pointer 从而对brr的修改不会影响arr
 }
+
+func CRUD() {
+	var sliceName []string
+	// 增加
+	sliceName = append(sliceName, "张三", "李四", "王五")
+	fmt.Println(sliceName)
+	// 修改
+	sliceName[0] = "赵六"
+	fmt.Println(sliceName)
+	// 删除
+	sliceName = append(sliceName[:1], sliceName[2:]...)
+	fmt.Println(sliceName)
+	// 查找
+	for i, v := range sliceName {
+		fmt.Printf("sliceName[%v] = %v\n", i, v)
+	}
+}

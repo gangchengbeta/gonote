@@ -85,7 +85,7 @@ func init() {
 func writeString() {
 	key := "name"
 	value := "coder4j"
-	err := RedisClient.Set(key, value, 10*time.Second).Err()
+	err := RedisClient.Set(key, value, 10*time.Minute).Err()
 	// 也可以调用Expire方法设置过期时间
 	//RedisClient.Expire(key, 10*time.Second)
 	HandleRedisError(err)

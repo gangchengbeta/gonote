@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gonote/db"
 	"net/http"
+	"net/url"
 	"strconv"
 )
 
@@ -34,8 +35,6 @@ func GetStudentInfo(studentId string) Student {
 			stud.Height = float32(height)
 		}
 	}
-	fmt.Println(stud)
-
 	return stud
 }
 
@@ -45,7 +44,13 @@ func GetName(ctx *gin.Context) {
 		ctx.String(http.StatusBadRequest, "student_id is empty")
 		return
 	}
+	studentId, err := url.QueryUnescape(param)
+	if err != nil {
+		ctx.String(http.StatusBadRequest, "student_id is error")
+		return
+	}
+
 	// 通过学生id获取学生信息
-	std := GetStudentInfo(param)
+	std := GetStudentInfo(studentId)
 	ctx.JSON(http.StatusOK, std)
 }
