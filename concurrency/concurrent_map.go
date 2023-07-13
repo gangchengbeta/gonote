@@ -38,12 +38,12 @@ type ConcurrentMap struct {
 	sync.Mutex //互斥锁
 }
 
-//func NewConcurrentMap() *ConcurrentMap {
-//	return &ConcurrentMap{
-//		m:         make(map[string]string),
-//		improveCh: make(map[string]*ImproveChannel),
-//	}
-//}
+func NewConcurrentMap() *ConcurrentMap {
+	return &ConcurrentMap{
+		m:         make(map[string]string),
+		improveCh: make(map[string]*ImproveChannel),
+	}
+}
 
 func (concurrentMap *ConcurrentMap) Put(key string, val string) {
 	concurrentMap.Lock()
